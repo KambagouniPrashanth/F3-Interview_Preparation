@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .output{
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>//Create an input field and take the name of the user through that input field 
+            //and have a submit button. Use cookies to store the name. 
+            //Whenever the page is reloaded, write a message saying
+            //“Hi There - ${name}” where name is fetched from the cookie you saved</p>
+    </div>
+    <form action="">
+        <div class="name">
+            <label for="name">Name</label>
+            <input type="text" id="name-input">
+        </div>
+        <div>
+            <button type="submit" id="submit-button">submit</button>
+
+        </div>
+    </form>
+    <div class="output" id="output">
+
+    </div>
+    <script>
+       const inputField = document.querySelector('#name-input');
+    //   
+      const submitButton = document.querySelector('#submit-button');
+
+
+            submitButton.addEventListener('click', () => {
+            const name = inputField.value;
+
+            document.cookie = `name=${name}`;
+            });
+
+            
+            window.addEventListener('load', () => {
+            // Get the name from the cookie
+            if(document.cookie){
+            const cookie = document.cookie;
+            const name = cookie.split('=')[1];
+
+            const message = `Hi there - ${name}`;
+            document.getElementById("output").innerText=message;
+            console.log(message);
+
+            }
+            
+            });
+
+    </script>
+    
+</body>
+</html>

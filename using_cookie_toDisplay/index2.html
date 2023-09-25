@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<h1>3. Create an input field and take the name of the user through that input field and
+    have a submit button. Use cookies to store the name. Whenever the page is
+    reloaded, write a message saying “Hi There - ${name}” where name is fetched
+    from the cookie you savedUI
+    </h1>
+</script >
+
+<!-- <form >
+    <label for = "name" > Enter Your Name </label >
+    <input type = "text" id = "name" />
+    <button type = "submit" > submit </button >
+</form > -->
+<input type="text" id="nameInput" placeholder="Enter your name">
+<button onclick="saveName()">Submit</button>
+<p id="greeting"></p>
+  <div id = "message"></div >
+<!-- <script >
+
+        function setCookies () {
+        const name = document . getElementById ( "name" ). value ;
+        console . log ( name );
+        document . cookie ="name = " +encodeURIComponent ( name ) + " ; expires = Thu,31 Dec 202323:59:59 GMT" ;
+        document . getElementById ( "message" ). textContent = "Hii there," + name ;
+        }
+        document.querySelector ( "form" ).addEventListener ("submit" ,function (event) {
+        event . preventDefault ();
+        setCookies ();
+        });
+</script > -->
+    
+<script>
+    function saveName() {
+  var name = document.getElementById("nameInput").value;
+  document.cookie = "name=" + name;
+  displayGreeting(name);
+}
+
+function displayGreeting(name) {
+  var greeting = document.getElementById("greeting");
+  greeting.textContent = "Hi there, " + getCookie("name") + "!";
+}
+
+function getCookie(name) {
+  var cookieArr = document.cookie.split(" ");
+  console.log(cookieArr)
+//   console.log(cookieArr[1]==name)
+  for (var i = 0; i < cookieArr.length; i++) {
+    var cookiePair = cookieArr[i].split("=");
+    if (name === cookiePair[0]) {
+      return decodeURIComponent(cookiePair[1]);
+    }
+  }
+  return null;
+}
+
+// Display greeting on page load
+window.onload = function() {
+  var name = getCookie("name");
+  if (name) {
+    displayGreeting(name);
+  }
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            display: flex;
+            gap:2rem;
+            align-items: center;
+            margin: 20px 0; 
+            border: 1px solid #ccc; 
+            padding: 20px;
+        }
+        
+        h2 { 
+        margin:0;
+        text-align: center;
+        } 
+        p { 
+          margin: 10px 0; 
+        } 
+        p{
+            align-self: auto;
+            /* border: 2px solid black; */
+        }
+    </style>
+</head>
+<body>
+    <h2>Product List</h2>
+    <ul id="list-item">
+        <!-- <li>
+            <p id="id">id</p>
+            <p id="title">title</p>
+            <p id="brand">el</p>
+            <img src="" alt="" id="image">
+        </li> -->
+
+    </ul>
+    <script>
+        let listContainer=document.getElementById("list-item");
+        
+        async function fetchItemDetails(){
+            try{
+                    let url=`https://dummyjson.com/products`
+                    let response=await fetch(url,{method:"GET"})
+                    let result=await response.json();
+                    console.log(result);
+                    appendDataToUI(result)
+
+            }
+            catch(e){
+                console.log(e.message)
+            }
+            
+
+        }
+
+        function appendDataToUI(data){
+            console.log(data.products)
+            let listdata=data.products;
+            let {id,title,brand,description}=listdata//destrucring
+            console.log(listdata,"listdata")
+
+            
+            listdata.forEach(element => {
+                // console.log(element)
+                let {id,title,brand,description}=element;
+                let li=document.createElement("li");
+                // li.textContent=`${element.title} -${element.price}-${element.description}`; 
+                li.innerHTML=`<p id="id">${id}</p>
+                            <p id="title">${title}</p>
+                            <p id="brand">${brand}</p>
+                            <p id="brand">${description}</p>`
+                // li.innerHTML=`<p id="id">${element.id}</p>
+                //             <p id="title">${element.title}</p>
+                //             <p id="brand">${element.brand}</p>
+                //             <p id="brand">${element.description}</p>`
+                // li.innerText=element.id+"  "+element.title+"  "+element.brand+" "
+                listContainer.appendChild(li)
+
+                
+            });
+
+        }
+        fetchItemDetails();
+    </script>
+    
+</body>
+</html>

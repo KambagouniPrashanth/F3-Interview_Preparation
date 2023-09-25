@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       #random-num{
+        font-size: 5rem;
+
+       }
+    </style>
+</head>
+<body>
+    <div class="output" id="output">
+        <h1>Create a function which returns a promise and returns a random number after 2500 milliseconds.Playground: </h1>
+
+       
+
+    </div>
+    <p id="random-num">
+
+    </p>
+
+    <script>
+        let container=document.getElementById("output");
+    
+        function getRandomNumber(){
+            return new Promise((resolve)=>{
+                setTimeout(()=>{
+                    let randomNumber=Math.floor(Math.random()*100);
+                    console.log(randomNumber)
+                    resolve(randomNumber)
+
+                },2500)
+
+               
+            })
+        }
+
+        async function displayRandomNumber(){
+            let result=await getRandomNumber();
+
+            let para=document.getElementById("random-num");
+            para.textContent=result;
+            // para.innerText=result;
+            // container.appendChild(para)
+
+        }
+        displayRandomNumber()
+
+    </script>
+    
+</body>
+</html>

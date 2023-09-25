@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Getter and setter method</h1>
+    <script>
+        // class Student{
+
+        //     constructor(){
+        //         this.age=0;
+        //         this.marks=0;
+        //     }
+        //     get age(){
+        //         return this.age;
+        //     }
+        //     set age(age){
+        //         if(age<3){
+        //             console.log("age cannot be accepted")
+        //         }
+        //         else if(this.age>=30){
+        //             console.log("inValid age")
+
+
+        //         }
+        //         else{
+        //             age=this.age;
+        //         }
+        //     }
+        //     get marks(){
+        //         return this.age;
+        //     }
+        //     set marks(marks){
+        //         if(marks<30){
+        //             console.log("Failed the test")
+        //         }
+        //         else if(marks>100){
+        //             console.log("inValid age")
+
+
+        //         }
+        //         else{
+        //             marks=this.marks;
+        //         }
+                
+        //     }
+
+            
+        // }
+   
+        // let student=new Student()
+        // student.age=3;
+        // student.marks=40;
+        // let age=student.age;
+        // let marks=student.marks;
+        // console.log(`age of the student is${age} and his marks is${marks}`)
+
+
+        class Student {
+  constructor(age, marks) {
+    this._age = age;
+    this._marks = marks;
+  }
+
+  get age() {
+    return this._age;
+  }
+
+  set age(newAge) {
+    if (newAge >= 3) {
+      this._age = newAge;
+    } else {
+      console.log("Age must be greater than or equal to 3.");
+    }
+  }
+
+  get marks() {
+    return this._marks;
+  }
+
+  set marks(newMarks) {
+    if (newMarks >= 0 && newMarks <= 100) {
+      this._marks = newMarks;
+    } else {
+      console.log("Marks must be between 0 and 100.");
+    }
+  }
+}
+
+       let student=new Student()
+        student.age=3;
+        student.marks=40;
+        let age=student.age;
+        let marks=student.marks;
+        console.log(`age :-${age} and marks:-${marks}`)
+       
+       
+
+   </script>
+    
+</body>
+</html>

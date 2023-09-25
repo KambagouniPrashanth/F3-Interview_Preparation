@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>callbackHell</h1>
+    <script>
+        function intro(name,callback){
+        setTimeout(()=>{
+            callback(`my name is ${name}`)
+        
+        },3000)
+}
+
+function workAt(company,callback){
+    setTimeout(()=>{
+        callback(`working At ${company}`)
+    
+    },2000)
+
+}
+function liveIn(city,callback){
+    setTimeout(()=>{
+        callback(`liveIn ${city}`)
+    
+    },3000)
+
+}
+
+
+intro("pc",function(message){
+    console.log(message)
+    workAt("tcs",function(message){
+        console.log(message)
+        liveIn("HYD",function(message){
+            console.log(message)
+        })
+    })
+
+})
+//no proper error handling
+
+
+//above function is callback hell
+    </script>
+    
+</body>
+</html>

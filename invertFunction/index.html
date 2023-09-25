@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Inver function</h1>
+    <script>
+        function objectReverse(obj){
+            let reverObj={};
+            for(let key in obj){
+                let value=obj[key];
+                reverObj[value]=key
+                
+            }
+            return reverObj;
+        }
+         const originalObj = {a: 1,b: 2,c: 3};
+             
+      const revObj = objectReverse(originalObj);
+      console.log(revObj);
+    </script>
+    
+</body>
+</html>

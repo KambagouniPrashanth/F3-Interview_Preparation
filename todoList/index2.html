@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        .item{
+            display: flex;
+            gap: 0.2rem;
+            flex-direction: column;
+            margin: 0rem 16rem 1rem 19rem;
+            font-size: 2rem;
+        }
+        .item input{
+            padding: 0.3rem 1.2rem;
+        }
+        .item button{
+            background-color: #007bff;
+            color: white;
+            width: 20%;
+            padding: 0.8rem;
+        }
+        .task-list{
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            font-size: 2rem;
+
+        }
+        .task-list p{
+            font-size: 3rem;
+        }
+        .task-title{
+            font-size: 2rem;
+        }
+        .task-desc{
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body>
+     
+    <form action="">
+        <h1>To Do list</h1>
+        <div class="item">
+            <label for="title">Task Title</label>
+            <input type="text" id="title">
+
+        </div>
+        <div class="item">
+            <label for="title">TaskDescription</label>
+            <textarea name="" id="description" cols="10" rows="10"></textarea>
+           
+            <button type="submit" id="add-task-form">Add Task</button>
+
+        </div>
+       
+
+    </form>
+    <ul id="task-list">
+        <h2>Task Title</h2>
+        <p>Task Descriition</p>
+        <button onclick="removeTask()">Remove</button>
+    </ul>
+
+    <script>
+        const addTaskForm = document.getElementById("add-task-form");
+        const taskList = document.getElementById("task-list");
+        let taskarr=[];
+       
+        function addTask(title,desc){
+            let task={title,desc};
+            taskarr.push(task)
+            updateTaskList()
+
+        }
+
+        function removeTask(index) {
+            // console.log("removeTask")
+            taskarr.splice(index,1);
+            // console.log(taskarr)
+           updateTaskList();
+        }
+        function updateTaskList(){
+            
+            taskList.innerHTML=" "
+            taskarr.forEach((task, index) => {
+                const taskElement = document.createElement("li");
+                taskElement.type="none";
+                taskElement.innerHTML = `
+                <p>${task.title}</p>
+                <p>${task.desc}</p>
+                <button onclick="removeTask(${index})">Remove</button>
+
+                
+                `;
+                taskList.appendChild(taskElement);
+                document.getElementById("title").value='';
+                document.getElementById("description").value='';
+
+            });
+
+        }
+
+        addTaskForm.addEventListener("click",(e)=>{
+           e.preventDefault();
+           let title=document.getElementById("title").value;
+           let desc=document.getElementById("description").value;
+           if(!title && !desc){
+            alert("All fiels are required")
+            return;
+           }
+           addTask(title,desc)
+
+            
+        
+
+        })
+        // <div class="task-title">${task.title}</div>
+        //         <div class="task-desc">${task.desc}</div>
+        //         <div class="task-actions">
+        //         <button onclick="removeTask(${index})">Remove</button>
+        //         </div>
+    </script>
+    
+</body>
+</html>

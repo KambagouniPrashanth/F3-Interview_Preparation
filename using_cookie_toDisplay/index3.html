@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="">
+        <input type="text" id="name-input">
+        <button type="submit" id="submit-btn">submit</button>
+    </form>
+    <div id="output">
+
+    </div>
+
+    <script>
+        let inputField=document.querySelector("#name-input")
+        let submit=document.querySelector("#submit-btn");
+
+        submit.addEventListener("click",(e)=>{
+            let name=inputField.value;
+            document.cookie=`name=${name}`
+        })
+
+        window.addEventListener("load",(e)=>{
+            if(document.cookie){
+                let cookie=document.cookie;
+                let name=cookie.split("=")[1];
+                const message = `Hi there - ${name}`;
+                console.log(cookie.split("="))
+                document.getElementById("output").innerText=message;
+            }
+        })
+
+
+    </script>
+</body>
+</html>

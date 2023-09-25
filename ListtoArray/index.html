@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hwere we have arr        let arr=[1,2,3,4,5]
+       
+
+    </h1>
+    <p> 5->rest is null   4->rest of array is 5   3->rest of arry is 5,4   2->rest of arry is 5,4,3   1->rest of arry is 5,4,3,2</p>
+    <script>
+        let arr=[1,2,3,4,5];
+        let arrToList=(()=>{
+            let list={};
+            for(let i=arr.length-1;i>=0;i--){
+                list={value:arr[i],rest:list}
+            }
+            return list;
+
+        })
+        console.log(arrToList())
+        
+    </script>
+    
+</body>
+</html>

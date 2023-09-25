@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>In this implementation, the mergeSort function recursively divides the input array into smaller subarrays until each subarray has only one element. Then, it calls the merge function to merge and sort the subarrays.
+
+        The merge function takes two sorted arrays (left and right) and merges them into a single sorted array. It compares the elements from both arrays and pushes the smaller element into the result array. After one of the arrays is exhausted, it concatenates the remaining elements from the other array to the result array.
+        
+        You can replace the arr array with your desired input array and see the sorted result in the console</h4>
+
+    <script>
+        function mergeSort(arr) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+
+  const mid = Math.floor(arr.length / 2);
+  const left = arr.slice(0, mid);
+  const right = arr.slice(mid);
+
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+function merge(left, right) {
+    console.log(left+"left array")
+    console.log(right+"right array")
+  let result = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < left.length && j < right.length) {
+    if (left[i] < right[j]) {
+      result.push(left[i]);
+      i++;
+    } else {
+      result.push(right[j]);
+      j++;
+    }
+  }
+
+  return result.concat(left.slice(i)).concat(right.slice(j));
+}
+
+// Example usage
+const arr = [5, 2, 8, 3, 1, 6];
+const sortedArr1= mergeSort(arr);
+console.log("Sorted array:", sortedArr1);
+    </script>
+    
+   
+</body>
+</html>

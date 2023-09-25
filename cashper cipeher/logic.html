@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Write a function called caesarCipher that takes in two arguments: a string to
+        encode and a number representing the shift. The function should shift each letter
+        of the string by the shift amount to the right in the alphabet. For example, if the
+        shift is 3, then "a" becomes "d", "b" becomes "e", "c" becomes "f", and so
+        on</h1>
+
+        <p>(charCode - 65 + shift): This subtracts 65 from the original charCode value. The purpose of subtracting 65 is to normalize the character code to the range 0-25, assuming the character is an uppercase letter. For example, if charCode is 67 (representing the letter 'C'), subtracting 65 gives us 2.
+
+            ((charCode - 65 + shift) % 26): After subtracting 65, we add the shift value, which represents the number of positions to shift the character. The modulo operator % is then used to wrap the result within the range of 0-25. This ensures that the shifted value remains within the valid range of uppercase letters. For example, if the shift is 3 and the normalized value is 2, the result would be 5 (2 + 3 = 5).
+            
+            ((charCode - 65 + shift) % 26) + 65: Finally, we add 65 back to the result to bring it back into the range of uppercase letter Unicode values. This step is necessary to convert the normalized value back to the original character code range. For example, if the result of the modulo operation is 5, adding 65 gives us 70, which represents the letter 'F' in Unicode.</p>
+
+        <!-- <script>
+
+            // function caesarCipher
+            function caesarCipher(str,shift){
+                    var chars = str.split("");//to split the string into letters
+                    console.log(chars)
+                    for(var i=0;i<chars.length;i++){
+                    var charCode = chars[i].charCodeAt(0);//
+                    if(charCode>=65 && charCode<=90){ //ASCII values for capital letters
+                        charCode = ((charCode-65+shift)%26)+65;
+                        console.log(charCode)
+                    
+                        console.log(String.fromCharCode(charCode))
+                        chars[i]=String.fromCharCode(charCode);
+                    }
+                    if(charCode>=97 && charCode<=122){ //ASCII values for small letters
+                        charCode = ((charCode-97+shift)%26)+97;
+                        console.log(charCode)
+                        console.log(String.fromCharCode(charCode))
+
+
+                        chars[i]=String.fromCharCode(charCode);
+                    }
+                }
+              return chars.join("");
+            }
+            console.log(caesarCipher("shital",3));
+        </script> -->
+       
+        <script>
+            function caesarCipher(str,shift){
+                let charArr=str.split("");
+                console.log(charArr)
+
+                
+                for(let i=0;i<charArr.length;i++){
+
+                    let char=charArr[i].charCodeAt(0);
+                    console.log(char)
+                    
+                    if(char>=65 && char<=90){ //for capital letters 
+                        let charcode=((char-65+shift)%26)+65;
+                        //in modulo operation if denaminator is high the result will be numerator
+
+                        charArr[i]=String.fromCharCode(charcode)
+                       
+
+
+                    }
+                    
+                    if(char>=97 && char<=122){
+                        //for small letters
+                        let charcode=((char-97+shift)%26)+97;
+                        //in modulo operation if denaminator is high the result will be numerator
+                        charArr[i]=String.fromCharCode(charcode)
+                        
+
+                    }
+                        
+                }
+                console.log(charArr)
+                return charArr.join("")
+
+            }
+            console.log(caesarCipher("shital",3))
+            console.log(caesarCipher("PRASHANTH",4))
+            console.log(caesarCipher("CDE",3))
+
+
+          
+        </script>
+    
+</body>
+</html>

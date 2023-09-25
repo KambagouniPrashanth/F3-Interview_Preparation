@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>event loop</h1>
+    <script>
+      function foo(b) {
+        console.log(b)
+      const a = 10;
+      
+      return a + b + 11;
+    }
+
+    function bar(x) {
+      const y = 3;
+     
+      return foo(x * y);
+    }
+
+  const baz = bar(7); // assigns 42 to baz
+  console.log(baz)
+
+    </script>
+</body>
+</html>
